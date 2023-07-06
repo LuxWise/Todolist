@@ -32,16 +32,15 @@ const TodoContextProvider = ({ children }) => {
   const addNote = (newnote) => {
     const newNotes = [...note];
     if (newNotes.some((notes) => (notes.note == newnote)) || newnote == ''){
-      toast.error('Todo repetido',{ duration:2000, position:"top-left"})
+      toast.error('todo repetido', { duration:2000, position:'top-left'})
     } else {
-      setError(false);
       newNotes.push({
         note:newnote,
         status:false,
       });
       saveNote(newNotes);
-      toast.success('agregado',{ duration:3000, position:"top-right"})
-    } 
+      toast.success('agregado',{ duration:2000, position:"top-right"})
+    }
   }
 
   const deleteNote = (notes) => {
