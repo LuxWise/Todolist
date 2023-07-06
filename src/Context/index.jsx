@@ -1,5 +1,6 @@
 import { createContext, useState } from "react"
 import { useLocalStorage } from "./useLocalStorage";
+import { toast } from 'react-hot-toast';
 
 const TodoContext = createContext();
 
@@ -11,8 +12,6 @@ const TodoContextProvider = ({ children }) => {
   } = useLocalStorage('NOTES_V1', [])
 
   const [inputValue,setInputValue] = useState('');
-
-  let error = false;
 
   const statusNote = (notes) => {
     const newNotes = [...note];
@@ -33,13 +32,15 @@ const TodoContextProvider = ({ children }) => {
   const addNote = (newnote) => {
     const newNotes = [...note];
     if (newNotes.some((notes) => (notes.note == newnote)) || newnote == ''){
-      
+      toast.error('Todo repetido',{ duration:2000, position:"top-left"})
     } else {
+      setError(false);
       newNotes.push({
         note:newnote,
         status:false,
       });
       saveNote(newNotes);
+      toast.success('agregado',{ duration:3000, position:"top-right"})
     } 
   }
 
@@ -62,7 +63,6 @@ const TodoContextProvider = ({ children }) => {
       addNote,
       statusNote,
       deleteNote,
-      error
       }}>
       { children }
     </TodoContext.Provider>

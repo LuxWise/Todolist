@@ -1,9 +1,8 @@
-import {useContext} from 'react';
+import { useContext } from 'react';
 import { TodoAdd } from '../Components/TodoAdd'
 import { TodoItems } from '../Components/TodoItems'
 import { TodoList } from '../Components/TodoList';
-import {TodoContext} from '../Context';
-
+import { TodoContext } from '../Context';
 
 const AppUI = () => {
 
@@ -12,6 +11,7 @@ const AppUI = () => {
     statusNote,
     deleteNote,
   } = useContext(TodoContext)
+
 
   return (
     <>
