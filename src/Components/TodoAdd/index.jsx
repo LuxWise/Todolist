@@ -9,8 +9,11 @@ const TodoAdd = () => {
     addNote,
     inputValue,
     setInputValue,
-  } = useContext(TodoContext)
-
+    positionToast
+  } = useContext(TodoContext);
+  
+   
+  
 
 return(
   <div className='relative flex min-w-screen justify-center items-center p-4 gap-2 bg-indigo-50'>
@@ -33,7 +36,7 @@ return(
       }}}
     />
 
-    <Toaster/>
+    <Toaster position={positionToast.position} duration='2000'/>
       
     </div>
   )

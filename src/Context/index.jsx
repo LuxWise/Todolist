@@ -6,6 +6,12 @@ const TodoContext = createContext();
 
 const TodoContextProvider = ({ children }) => {
 
+  const positionToast = { position: 'bottom-center'};
+
+  if(window.innerWidth > 1024){
+    positionToast.position = 'top-left'
+  }
+
   const {
     note,
     saveNote,
@@ -31,15 +37,17 @@ const TodoContextProvider = ({ children }) => {
 
   const addNote = (newnote) => {
     const newNotes = [...note];
-    if (newNotes.some((notes) => (notes.note == newnote)) || newnote == ''){
-      toast.error('To do repeated', { duration:2000, position:'top-left'})
+    if (newNotes.some((notes) => (notes.note == newnote))){
+      toast.error('To do repeated');
+    } else if (newnote == ''){
+      toast.error('undefined');
     } else {
       newNotes.push({
         note:newnote,
         status:false,
       });
       saveNote(newNotes);
-      toast.success('add successfully',{ duration:2000, position:"top-right"})
+      toast.success('add successfully');
     }
   }
 
@@ -62,6 +70,7 @@ const TodoContextProvider = ({ children }) => {
       addNote,
       statusNote,
       deleteNote,
+      positionToast,
       }}>
       { children }
     </TodoContext.Provider>
