@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
+    "framer-motion": "^10.12.22",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-hot-toast": "^2.4.1",
@@ -31,5 +32,5 @@
     "vite": "^4.3.9",
     "vite-plugin-gh-pages": "^0.4.1"
   },
-  "homepage": "https://outs1ders.github.io/Todolist/"
+  "homepage": "https://outs1ders.github.io/Todolist"
 }

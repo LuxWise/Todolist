@@ -40,7 +40,7 @@ const TodoContextProvider = ({ children }) => {
     if (newNotes.some((notes) => (notes.note == newnote))){
       toast.error('To do repeated');
     } else if (newnote == ''){
-      toast.error('undefined');
+      toast.error('Undefined');
     } else {
       newNotes.push({
         note:newnote,
@@ -62,6 +62,16 @@ const TodoContextProvider = ({ children }) => {
     saveNote(newNotes);
   }
 
+  const fullDelete = () => {
+    const newNotes = [...note].filter(
+      noti => noti.status !== 'true'
+    );
+  
+    saveNote(newNotes)
+  }
+
+
+
   return(
     <TodoContext.Provider value={{
       note,
@@ -71,6 +81,7 @@ const TodoContextProvider = ({ children }) => {
       statusNote,
       deleteNote,
       positionToast,
+      fullDelete,
       }}>
       { children }
     </TodoContext.Provider>
