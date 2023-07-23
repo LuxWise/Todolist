@@ -7,23 +7,21 @@ const variants = {
   hidden: {
     opacity: 0
   },
-  visible: {
+  visible: ({delay}) => ({
     opacity: 1,
     transition: {
-      duration : 1.5
+      delay,
+      duration : 1
     }
-  }
-
+  })
 }
 
-
-const TodoItems = ({note, status, onStatus, onDelete}) => {
+const TodoItems = ({note, status, onStatus, onDelete, index}) => {
 
   const Notestatus = {
     'true' : <Complete className='text-2xl text-emerald-500 cursor-pointer' onClick={onStatus}/>,
     'false' : <FaRegCircle className='text-2xl text-emerald-500 cursor-pointer' onClick={onStatus} />
   };
-
 
   return(
     
@@ -31,6 +29,7 @@ const TodoItems = ({note, status, onStatus, onDelete}) => {
       layoutId={note}
     >
       <motion.div className='flex gap-5 '
+        custom={{ delay: (index ) * 0.05 }}
         initial='hidden'
         animate='visible'
         exit='hidden'

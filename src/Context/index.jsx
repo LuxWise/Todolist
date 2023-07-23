@@ -42,7 +42,7 @@ const TodoContextProvider = ({ children }) => {
     } else if (newnote == ''){
       toast.error('Undefined');
     } else {
-      newNotes.push({
+      newNotes.unshift({
         note:newnote,
         status:false,
       });
@@ -62,12 +62,26 @@ const TodoContextProvider = ({ children }) => {
     saveNote(newNotes);
   }
 
+  const fullCheck = () => {
+    const newNotes = [...note].map(
+      noti => {if (noti.status === false ) {
+        return { ...noti, status: 'true'};
+      }
+        return noti;
+    }); 
+  
+
+    saveNote(newNotes)
+  }
+
+
   const fullDelete = () => {
     const newNotes = [...note].filter(
       noti => noti.status !== 'true'
     );
-  
+
     saveNote(newNotes)
+
   }
 
 
@@ -82,6 +96,7 @@ const TodoContextProvider = ({ children }) => {
       deleteNote,
       positionToast,
       fullDelete,
+      fullCheck,
       }}>
       { children }
     </TodoContext.Provider>

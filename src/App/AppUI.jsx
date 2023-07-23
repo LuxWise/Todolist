@@ -17,8 +17,9 @@ const AppUI = () => {
     <>
       <TodoAdd/>
       <TodoList>
-        {note.map((todo) => (
+        {note.map((todo, index) => (
           <TodoItems
+            index = {index}
             key={todo.note}
             note={todo.note}
             status={todo.status}
