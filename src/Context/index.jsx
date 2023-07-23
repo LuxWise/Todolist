@@ -26,8 +26,8 @@ const TodoContextProvider = ({ children }) => {
     );
 
     const noteStatus = {
-      'false' : 'true',
-      'true' : 'false',
+      'false' : true,
+      'true' : false,
     }
 
     newNotes[statusIndex].status = noteStatus[newNotes[statusIndex].status]
