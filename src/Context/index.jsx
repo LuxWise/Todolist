@@ -64,12 +64,10 @@ const TodoContextProvider = ({ children }) => {
 
   const fullCheck = () => {
     const newNotes = [...note].map(
-      noti => {if (noti.status === false ) {
-        return { ...noti, status: 'true'};
-      }
-        return noti;
+      noti => { 
+        return { ...noti, status: !noti.status};
+      
     }); 
-  
 
     saveNote(newNotes)
   }
@@ -77,7 +75,7 @@ const TodoContextProvider = ({ children }) => {
 
   const fullDelete = () => {
     const newNotes = [...note].filter(
-      noti => noti.status !== 'true'
+      noti => noti.status !== true
     );
 
     saveNote(newNotes)
