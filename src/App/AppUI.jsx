@@ -5,7 +5,6 @@ import { TodoList } from '../Components/TodoList';
 import { TodoContext } from '../Context';
 
 const AppUI = () => {
-
   const {
     note,
     statusNote,
